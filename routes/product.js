@@ -51,7 +51,8 @@ router
                 const product = await Product.findById(id);
 
                 if (product) {
-                    return Product.deleteOne(product);
+                    await Product.deleteOne(product);
+                    return res.status(204).send();
                 } else {
                     return res.status(404).json({ error: error });
                 }
