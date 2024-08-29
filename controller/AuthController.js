@@ -7,6 +7,10 @@ require('dotenv').config();
 class AuthController {
     static async register(req, res) {
         const { name, email, password } = req.body;
+
+        if (await User.findOne({ email }))
+            return res.status(400).json({ message: "Email is already in use" });
+
         const salt = await bcrypt.genSalt(12);
         const passwordHash = await bcrypt.hash(password, salt);
 
