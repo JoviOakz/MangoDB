@@ -2,6 +2,12 @@ const express = require('express');
 const router = require('./routes');
 const app = express();
 
+const cors = require('cors');
+
+app.use(cors({
+    origin: '*'
+}));
+
 require('./startup/db')();
 
 router(app);
