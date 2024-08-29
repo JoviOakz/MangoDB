@@ -49,8 +49,8 @@ class AuthController {
     }
 
     static async delete(req, res) {
-        const { id, password } = req.params;
-        const user = await User.findOne({ id });
+        const { email, password } = req.params;
+        const user = await User.findOne({ email });
 
         if (!user)
             return res.status(400).send({ message: "Invalid Email or password" });
