@@ -25,6 +25,27 @@ class AuthController {
     }
 
     static async login(req, res) {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+
+        if (!user)
+            return res.status(400).send({ message: "Invalid Email or password" });
+        if (!await bcrypt.compare(password, user.password))
+            return res.status(400).send({ message: "Invalid Email or password" });
+
+        const secret = process.env.SECRET;
+
+        const token = jwt.sign(
+            {
+                id: user._id,
+            },
+            secret,
+            {
+                expiresIn: '2 days'
+            }
+        );
+
+        return res.status(200).send({ token: token })
     }
 }
 
