@@ -47,6 +47,23 @@ class AuthController {
 
         return res.status(200).send({ token: token })
     }
+
+    static async delete(req, res) {
+        const { email, password } = req.params;
+        const user = await User.findOne({ email });
+
+        if (!user)
+            return res.status(400).send({ message: "Invalid Email or password" });
+        if (!await bcrypt.compare(password, user.password))
+            return res.status(400).send({ message: "Invalid Email or password" });
+
+        try {
+            await User.deleteOne(user);
+            return res.status(204).send();
+        } catch (error) {
+            return res.status(500).json({ error: error });
+        }
+    }
 }
 
 module.exports = AuthController;
