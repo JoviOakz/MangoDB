@@ -3,6 +3,6 @@ const ArticleController = require('../controller/ArticleController');
 const route = express.Router();
 
 route
-    .post('/', ArticleController.create)
+    .post('/create', ArticleController.create)
 
 module.exports = route;
