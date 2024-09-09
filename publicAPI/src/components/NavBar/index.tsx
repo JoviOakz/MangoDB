@@ -9,9 +9,9 @@ const NavBar = () => {
                 <div className="flex justify-between w-11/12 text-white">
                     <h1>publicAPI</h1>
 
-                    <div className="flex w-2/12 gap-24">
+                    <div className="flex pr-16 gap-12">
                         <h1>Home</h1>
-                        <h1>Home</h1>
+                        <h1>More Information</h1>
                     </div>
                 </div>
             </div>
