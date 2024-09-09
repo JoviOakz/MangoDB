@@ -10,7 +10,7 @@ const HomePage = () => {
                     <div>input</div>
                 </div>
 
-                <Button>Salvar</Button>
+                <Button title="Salvar" />
             </div>
         </div>
     )
