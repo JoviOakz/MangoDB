@@ -1,6 +1,6 @@
 const Input = () => {
     return (
-        <div></div>
+        <input type="text" placeholder="Digite o texto" className="h-12 rounded-md bg-slate-200" />
     )
 }
 
