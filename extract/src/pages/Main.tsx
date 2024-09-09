@@ -1,8 +1,12 @@
 import NavBar from "../components/NavBar";
+import HomePage from "../components/HomePage";
 
 const Main = () => {
     return (
-        <NavBar />
+        <div>
+            <NavBar />
+            <HomePage />
+        </div>
     )
 }
 
