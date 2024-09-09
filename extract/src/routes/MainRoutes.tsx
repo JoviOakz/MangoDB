@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import TesteNavBar from "../components/TesteNavBar";
+import NavBar from "../components/NavBar";
 
 export const routes = createBrowserRouter([
     {
         path: "/",
-        element: <TesteNavBar/>
+        element: <NavBar/>
     },
 ])
