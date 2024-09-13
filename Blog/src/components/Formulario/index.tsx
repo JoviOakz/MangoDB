@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import {
     Button,
     Col,
@@ -6,12 +6,19 @@ import {
     Form,
     Row
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css';
 
 const Formulario = () => {
     var [author, setAuthor] = useState('');
     var [title, setTitle] = useState('');
     var [text, setText] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+        e.preventDefault();
+        navigate('/home');
+    }
     
     return (
         <Container>
