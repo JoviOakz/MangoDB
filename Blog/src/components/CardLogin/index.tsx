@@ -51,11 +51,12 @@ const CardLogin = () => {
                     />
                     <Form.Control
                         value={pass}
+                        type="password"
                         placeholder="Insira sua senha"
                         onChange={(e) => setPass(e.target.value)}
                     /><Button
                         className={styles.card__form__button}
-                        type='submit'
+                        type="submit"
                     >
                         Entrar
                     </Button>
