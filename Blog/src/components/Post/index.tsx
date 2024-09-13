@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
-import { AiOutlineLike } from "react-icons/ai";
-import styles from './styles.module.css';
+import { useEffect, useState } from 'react';
+import {
+    Button,
+    Card,
+    Container
+} from 'react-bootstrap'
+import { AiOutlineLike } from 'react-icons/ai'
 import { TArtigo } from "../../types/artigo";
+import styles from './styles.module.css';
 
-export default function Post() {
+const Post = () => {
     var [artigos, setArtigos] = useState<TArtigo[]>([]);
-
     function getPosts() {
         setArtigos([
             {
@@ -30,22 +34,26 @@ export default function Post() {
     const RenderPosts = () => {
         return artigos.map((artigo) => {
             return (
-                <form key={artigo.id} className={styles.card} >
-                    <div className={styles.card__title}>
+                <Card key={artigo.id} className={styles.card} >
+                    <Card.Title className={styles.card__title}>
                         {artigo.title}
-                    </div>
-                    <div className={styles.card__body}>
-                        <div className={styles.card__body__article}>{artigo.text}</div>
+                    </Card.Title>
+                    <Card.Body className={styles.card__body}>
+                        <Card.Text className={styles.card__body__article}>{artigo.text}</Card.Text>
                         <div className='d-flex align-items-center '>
-                            {artigo.likes}<button><AiOutlineLike /></button>
+                            {artigo.likes}<Button variant='light'><AiOutlineLike /></Button>
                         </div>
-                    </div>
-                </form>
+                    </Card.Body>
+                </Card>
             )
         })
     }
 
     return (
-        <div><RenderPosts /></div>
+        <Container>
+            <RenderPosts />
+        </Container>
     )
 }
+
+export default Post;
