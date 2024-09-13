@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
+import { ReactNode, useEffect, useState } from "react";
 
-const ProtectedRoute = ({ errorPage, targetPage }) => {
-    var [page, setPage] = useState(<></>);
+interface IProtectedRoute {
+    errorPage: ReactNode
+    targetPage: ReactNode
+}
+
+const ProtectedRoute = ({ errorPage, targetPage }: IProtectedRoute) => {
+    var [page, setPage] = useState<ReactNode>(<></>);
     function renderPage() {
         const token = sessionStorage.getItem('token');
         console.log(token)
@@ -10,9 +15,9 @@ const ProtectedRoute = ({ errorPage, targetPage }) => {
             setPage(errorPage)
             return
         }
-        const decodeToken = jwt_decode(token)
+        const decodeToken = jwtDecode(token)
         const { exp } = decodeToken;
-        if (exp + '000' - Date.now()) {
+        if (Number(exp + '000') - Date.now()) {
             setPage(errorPage)
             return
         }

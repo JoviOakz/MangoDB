@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 
 export default function AlertComponent() {
     const { message, variant, show, setShow } = useContext(AlertContext);
+
     return (
         <Alert
             show={show}

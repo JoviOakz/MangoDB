@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { routes } from './routes/MainRoutes'
-import { AlertProvider } from './context/alert';
+import AlertProvider from './context/alert'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(

@@ -1,9 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 
-export const AlertContext = React.createContext();
+interface IAlertContext {
+    message: string
+    setMessage: Dispatch<SetStateAction<string>>
+    variant: string
+    setVariant: Dispatch<SetStateAction<string>>
+    show: boolean
+    setShow: Dispatch<SetStateAction<boolean>>
+}
+
+export const AlertContext = createContext({} as IAlertContext);
 AlertContext.displayName = 'Alert';
 
-const AlertProvider = ({ children }) => {
+const AlertProvider = ({ children }: { children: ReactNode }) => {
     var [message, setMessage] = useState('');
     var [variant, setVariant] = useState('danger');
     var [show, setShow] = useState(false);

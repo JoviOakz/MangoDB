@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
+import { FormEventHandler, useContext, useState } from "react";
 import {
     Button,
     Card,
     Form
 } from "react-bootstrap";
-import axios from 'axios';
+// import axios from "axios";
 import { AlertContext } from "../../context/alert";
 import styles from './styles.module.css';
 
@@ -16,7 +16,7 @@ const CardRegister = () => {
     var [password, setPassword] = useState('');
     var [confirmPass, setConfirmPass] = useState('');
 
-    function handleSubmit(e) {
+    const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         if (!formValid()) return
     }
@@ -44,7 +44,8 @@ const CardRegister = () => {
         }
 
         if (email.length < 5) {
-            setMessage('Insira um e-mail válido')setShow(true);
+            setMessage('Insira um e-mail válido')
+            setShow(true);
             setVariant('danger')
             return false;
         }

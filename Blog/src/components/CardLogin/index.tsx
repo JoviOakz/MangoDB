@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { FormEventHandler, useContext, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { AlertContext } from "../../context/alert";
@@ -10,7 +10,7 @@ const CardLogin = () => {
     var [email, setEmail] = useState('');
     var [pass, setPass] = useState('');
 
-    function handleSubmit(e) {
+    const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         if (!formValid()) return
         navigate('/home')
